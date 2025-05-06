@@ -1,0 +1,19 @@
+// const mongoose = require('mongoose');
+
+// const plugStatusSchema = new mongoose.Schema({
+//   plug: { type: mongoose.Schema.Types.ObjectId, ref: 'Plug', required: true },
+//   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // should remove this
+//   power: { type: String }, // 'ON' or 'OFF'
+//   energy: {
+//     TotalStartTime: String,
+//     Total: Number,
+//     Yesterday: Number,
+//     Today: Number,
+//     Power: Number,
+//     Voltage: Number,
+//     Current: Number
+//   },
+//   timestamp: { type: Date, default: Date.now }
+// });
+
+// module.exports = mongoose.model('PlugStatus', plugStatusSchema);

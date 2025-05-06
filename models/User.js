@@ -12,6 +12,11 @@ const UserSchema = new mongoose.Schema({
   verificationOTPExpiry: Date,
   otp: String,
   otpExpiry: Date,
+
+  // added plugs reference array
+  plugs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Plug' }]
+  // plugs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Plug' }]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);

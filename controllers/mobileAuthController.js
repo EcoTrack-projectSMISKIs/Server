@@ -4,6 +4,8 @@ const User = require("../models/User");
 const barangaysInNasugbu = require("../constants/barangays");
 const { sendVerificationEmail } = require("../utils/mailer");
 
+// note on line 26
+
 // Generate token
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: "7d" });
@@ -21,7 +23,9 @@ exports.register = async (req, res) => {
     const existingUser = await User.findOne({ $or: [{ email }, { username }, { phone }] });
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);    
+    
     const verificationOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
     const newUser = await User.create({
